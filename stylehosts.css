@@ -1,0 +1,246 @@
+:root{
+  --hosts-bg:#fbf9f5;
+  --hosts-ink:#25221f;
+  --hosts-muted:#69635d;
+  --hosts-gold:#a8784c;
+  --hosts-beige:#b69a78;
+  --hosts-line:rgba(168,120,76,.28);
+}
+
+.hosts-page{
+  min-height:100vh;
+  background:var(--hosts-bg);
+  color:var(--hosts-ink);
+}
+
+/* Same navigation treatment as the Explore Sitia page. */
+.hosts-page .nav{
+  left:34px;
+  top:50%;
+  bottom:auto;
+  transform:translateY(-50%);
+}
+
+.hosts-page .links{
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-start;
+  gap:22px;
+  padding:0 0 0 18px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  backdrop-filter:none;
+}
+
+.hosts-page .links::before{
+  display:block;
+}
+
+.hosts-page .links a{
+  color:#8c6239 !important;
+  font-size:13px;
+  letter-spacing:3px;
+}
+
+.hosts-page .links a:hover,
+.hosts-page .links a.active{
+  color:var(--hosts-gold) !important;
+}
+
+.mobile-nav-toggle{display:none;}
+
+.hosts-main{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:76px clamp(26px, 4vw, 64px) 76px clamp(190px, 16vw, 270px);
+}
+
+.hosts-page .booking-request-section{
+  width:min(1080px, 100%);
+  margin:110px 0 0;
+}
+
+.hosts-page .booking-request-heading h2{
+  font-size:clamp(2rem, 5vw, 5.4rem);
+  white-space:nowrap;
+}
+
+.hosts-story{
+  width:min(1080px, 100%);
+  padding:14px 0 0 34px;
+  border-left:1px solid var(--hosts-line);
+}
+
+.hosts-kicker,
+.hosts-note{
+  font-family:"Montserrat", sans-serif;
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--hosts-gold);
+}
+
+.title-beige{
+  color:var(--hosts-beige);
+}
+
+.hosts-story h1{
+  margin:22px 0 34px;
+  font-family:"Cinzel", serif;
+  font-size:clamp(4rem, 8vw, 7.4rem);
+  font-weight:400;
+  line-height:.95;
+  letter-spacing:-.035em;
+  text-transform:uppercase;
+  color:var(--hosts-ink);
+}
+
+.hosts-copy{
+  max-width:none;
+}
+
+.hosts-copy p{
+  margin:0;
+  font-family:"Montserrat", sans-serif;
+  font-size:13px;
+  line-height:1.95;
+  color:var(--hosts-muted);
+}
+
+.hosts-copy p + p{
+  margin-top:18px;
+}
+
+.hosts-note{
+  display:block;
+  margin-top:30px;
+  padding:19px 0 2px;
+  border-top:1px solid rgba(168,120,76,.18);
+  font-size:8px;
+  letter-spacing:.2em;
+}
+
+@media (max-width:720px){
+  .hosts-page .nav{
+    left:auto;
+    right:16px;
+    top:16px;
+    bottom:auto;
+    transform:none;
+    padding:0;
+    background:transparent;
+    border:0;
+    backdrop-filter:none;
+  }
+
+  .hosts-page .nav-inner{position:relative;}
+
+  .mobile-nav-toggle{
+    position:relative;
+    z-index:2;
+    display:flex;
+    width:46px;
+    height:46px;
+    margin-left:auto;
+    padding:0;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    border:1px solid rgba(168,120,76,.3);
+    border-radius:50%;
+    background:rgba(251,249,245,.94);
+    box-shadow:0 10px 28px rgba(37,34,31,.12);
+    backdrop-filter:blur(10px);
+    cursor:pointer;
+  }
+
+  .mobile-nav-toggle span{width:17px;height:1px;background:var(--hosts-gold);transition:transform .25s ease,opacity .2s ease;}
+  .hosts-page .nav.is-open .mobile-nav-toggle span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .hosts-page .nav.is-open .mobile-nav-toggle span:nth-child(2){opacity:0;}
+  .hosts-page .nav.is-open .mobile-nav-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+  .hosts-page .links{
+    position:absolute;
+    top:56px;
+    right:0;
+    flex-direction:column;
+    align-items:flex-end;
+    justify-content:flex-start;
+    width:210px;
+    gap:16px;
+    padding:22px 24px;
+    flex-wrap:nowrap;
+    overflow:visible;
+    border:1px solid rgba(168,120,76,.2);
+    border-radius:14px;
+    background:rgba(251,249,245,.97);
+    box-shadow:0 20px 48px rgba(37,34,31,.16);
+    backdrop-filter:blur(12px);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-8px);
+    transition:opacity .22s ease,transform .22s ease,visibility .22s;
+  }
+
+  .hosts-page .nav.is-open .links{opacity:1;visibility:visible;transform:translateY(0);}
+
+  .hosts-page .links::before{
+    display:none;
+  }
+
+  .hosts-page .links a{
+    width:100%;
+    color:var(--hosts-gold) !important;
+    font-size:10px;
+    letter-spacing:2px;
+    text-shadow:none;
+  }
+
+  .hosts-page .links a:hover{transform:none;}
+
+  .hosts-page .links a.active::after{
+    width:12px;
+    margin-left:6px;
+  }
+
+  .hosts-main{
+    min-height:auto;
+    padding:76px 20px;
+  }
+
+  .hosts-story{
+    padding:10px 0 0 22px;
+  }
+
+  .hosts-story h1{
+    margin:18px 0 28px;
+    font-size:clamp(3.3rem, 17vw, 5rem);
+  }
+
+  .hosts-page .booking-request-heading h2{
+    font-size:clamp(1.85rem, 9vw, 3rem);
+  }
+
+  .hosts-copy p{
+    font-size:12px;
+    line-height:1.9;
+  }
+}
+
+/* Mobile keeps the same vertical navigation treatment as desktop. */
+@media (max-width:720px){
+  .hosts-page .nav{left:12px;right:auto;top:50%;bottom:auto;transform:translateY(-50%);padding:0;background:transparent;border:0;backdrop-filter:none;}
+  .hosts-page .nav-inner{position:static;}
+  .hosts-page .links{position:relative;top:auto;right:auto;width:auto;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:17px;padding:0 0 0 12px;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;opacity:1;visibility:visible;transform:none;overflow:visible;}
+  .hosts-page .links::before{display:block;left:0;}
+  .hosts-page .links a{width:auto;color:var(--hosts-gold)!important;font-size:9px;letter-spacing:1.7px;text-shadow:none;white-space:nowrap;}
+  .hosts-page .links a:hover{transform:translateX(4px);}
+  .hosts-main{width:100%;padding:76px 18px;}
+  .hosts-story{width:min(100%, 520px);margin-left:auto;margin-right:auto;padding-left:0;border-left:0;}
+}

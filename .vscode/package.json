@@ -1,0 +1,13 @@
+{
+  "name": "platani-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static local dev server for the Platani website",
+  "scripts": {
+    "dev": "http-server . -p 5500 -c-1 -o /accomndation.html",
+    "start": "http-server . -p 5500 -c-1 -o /accomndation.html"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

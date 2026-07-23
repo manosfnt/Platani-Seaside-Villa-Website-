@@ -1,0 +1,606 @@
+:root{
+  --city-bg:#fbf9f5;
+  --city-ink:#25221f;
+  --city-muted:#69635d;
+  --city-gold:#a8784c;
+  --city-line:rgba(168,120,76,.28);
+}
+
+/* Calm, flat image interaction: no perspective or 3D distortion. */
+.city-story-gallery img{cursor:zoom-in;transform:scale(1);filter:saturate(.96) contrast(.99);transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .55s ease,box-shadow .55s ease;will-change:transform}
+.city-story-gallery img:hover{position:relative;z-index:8;transform:scale(1.018);filter:saturate(1.02) contrast(1.01);box-shadow:0 18px 38px rgba(35,36,24,.18)}
+@media (hover:none){.city-story-gallery img:active{transform:scale(1.012)}}
+@media (prefers-reduced-motion:reduce){.city-story-gallery img{transition:none;transform:none}}
+
+.explore-sitia-page{
+  background:var(--city-bg);
+}
+
+.explore-sitia-page .sitia-shell{
+  padding:0 0 140px;
+  background:var(--city-bg);
+}
+
+/* Shared vertical navigation */
+.explore-sitia-page .nav{
+  left:34px;
+  top:50%;
+  bottom:auto;
+  transform:translateY(-50%);
+}
+
+.explore-sitia-page .links{
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-start;
+  gap:22px;
+  padding:0 0 0 18px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  backdrop-filter:none;
+}
+
+.explore-sitia-page .links::before{
+  display:block;
+}
+
+.explore-sitia-page .links a{
+  color:#8c6239 !important;
+  font-size:13px;
+  letter-spacing:3px;
+}
+
+.explore-sitia-page .links a:hover,
+.explore-sitia-page .links a.active{
+  color:var(--city-gold) !important;
+}
+
+/* Minimal title */
+.city-intro{
+  min-height:0;
+  width:min(920px, calc(100vw - 48px));
+  margin:0 auto;
+  padding:88px 24px 30px;
+  text-align:center;
+  color:var(--city-ink);
+  background:none;
+  overflow:visible;
+  transform:none;
+  filter:none;
+}
+
+.city-intro::before{
+  display:none;
+}
+
+.city-intro::after{
+  display:none;
+}
+
+.city-intro-eyebrow,
+.city-story-number,
+.city-story-note{
+  font-family:"Montserrat", sans-serif;
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--city-gold);
+}
+
+.city-intro h1{
+  margin:0 0 14px;
+  font-family:"Cinzel", serif;
+  font-size:clamp(3.6rem, 6vw, 6.25rem);
+  font-weight:400;
+  line-height:.95;
+  letter-spacing:.025em;
+  color:var(--city-ink);
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.city-intro h1 span{
+  display:inline;
+  margin:0 .2em 0 0;
+  font-family:"Cinzel", serif;
+  font-size:.48em;
+  font-style:normal;
+  font-weight:500;
+  line-height:inherit;
+  letter-spacing:.24em;
+  color:var(--city-gold);
+  vertical-align:middle;
+}
+
+.city-intro p{
+  width:min(700px, 100%);
+  max-width:none;
+  margin:0 auto;
+  padding:0 20px;
+  font-family:"Lora", serif;
+  font-size:clamp(.98rem, 1.35vw, 1.14rem);
+  font-style:italic;
+  line-height:1.65;
+  letter-spacing:.01em;
+  color:var(--city-muted);
+}
+
+.city-intro-line{
+  display:none;
+}
+
+/* Three editorial chapters */
+.city-stories{
+  width:min(1420px, calc(100vw - 72px));
+  max-width:none;
+  margin:0 auto;
+  padding:0;
+}
+
+.city-story{
+  display:grid;
+  grid-template-columns:minmax(330px, .8fr) minmax(540px, 1.2fr);
+  gap:clamp(64px, 8vw, 130px);
+  align-items:center;
+  padding:92px 0;
+  border-top:1px solid var(--city-line);
+}
+
+.city-story:first-child{
+  padding-top:56px;
+}
+
+.city-story-reverse{
+  grid-template-columns:minmax(540px, 1.2fr) minmax(330px, .8fr);
+}
+
+.city-story-reverse .city-story-copy{
+  grid-column:2;
+  grid-row:1;
+}
+
+.city-story-reverse .city-story-gallery{
+  grid-column:1;
+  grid-row:1;
+}
+
+.city-story-copy{
+  max-width:520px;
+  padding-left:30px;
+  border-left:1px solid var(--city-line);
+}
+
+.city-story h2{
+  margin:15px 0 24px;
+  font-family:"Cinzel", serif;
+  font-size:clamp(2.7rem, 4.8vw, 5.2rem);
+  font-weight:400;
+  line-height:1;
+  letter-spacing:-.035em;
+  color:var(--city-ink);
+}
+
+.city-story-copy p{
+  margin:0;
+  font-family:"Montserrat", sans-serif;
+  font-size:13px;
+  line-height:1.95;
+  color:var(--city-muted);
+}
+
+.city-story-copy p + p{
+  margin-top:15px;
+}
+
+.city-story-note{
+  display:block;
+  margin-top:28px;
+  padding-top:17px;
+  border-top:1px solid rgba(168,120,76,.18);
+  font-size:8px;
+  letter-spacing:.18em;
+}
+
+.tripadvisor-link{
+  width:fit-content;
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  margin-top:20px;
+  padding-bottom:7px;
+  border-bottom:1px solid var(--city-gold);
+  font-family:"Montserrat", sans-serif;
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.17em;
+  line-height:1.5;
+  text-transform:uppercase;
+  color:var(--city-ink);
+  text-decoration:none;
+  transition:color .25s ease, gap .25s ease, border-color .25s ease;
+}
+
+.tripadvisor-link svg{
+  width:14px;
+  height:14px;
+  flex:0 0 auto;
+  stroke-width:1.6;
+  color:var(--city-gold);
+}
+
+.tripadvisor-link:hover{
+  gap:15px;
+  color:var(--city-gold);
+  border-color:transparent;
+}
+
+.tripadvisor-link:focus-visible{
+  outline:2px solid var(--city-gold);
+  outline-offset:5px;
+}
+
+.city-story-gallery{
+  height:clamp(430px, 43vw, 610px);
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  grid-template-rows:repeat(2, minmax(0, 1fr));
+  gap:10px;
+}
+
+.city-story-gallery img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  min-width:0;
+  overflow:hidden;
+  border-radius:12px;
+  border:1px solid rgba(168,120,76,.18);
+  transition:transform 1s ease;
+}
+
+/* Host recommendations */
+.recommendations{
+  width:min(1420px, calc(100vw - 72px));
+  margin:0 auto;
+  padding:76px 0 10px;
+}
+
+.recommendations-divider{
+  width:min(1420px, calc(100vw - 72px));
+  margin:40px auto 0;
+}
+
+.recommendations-divider-after{
+  margin-top:82px;
+  margin-bottom:0;
+}
+
+.recommendations-heading{
+  display:grid;
+  grid-template-columns:minmax(0, 1.25fr) minmax(280px, .75fr);
+  gap:clamp(40px, 8vw, 130px);
+  align-items:end;
+  margin-bottom:52px;
+}
+
+.recommendations-kicker,
+.recommendation-type,
+.recommendation-tip{
+  font-family:"Montserrat", sans-serif;
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--city-gold);
+}
+
+.recommendations-heading h2{
+  max-width:850px;
+  margin:14px 0 0;
+  font-family:"Cinzel", serif;
+  font-size:clamp(2.8rem, 5vw, 5.4rem);
+  font-weight:400;
+  line-height:1.04;
+  letter-spacing:-.035em;
+  color:var(--city-ink);
+}
+
+.recommendations-heading > p{
+  margin:0 0 7px;
+  font-family:"Lora", serif;
+  font-size:1rem;
+  font-style:italic;
+  line-height:1.75;
+  color:var(--city-muted);
+}
+
+.recommendations-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  border-top:1px solid var(--city-line);
+  border-left:1px solid var(--city-line);
+}
+
+.recommendation-card{
+  min-height:360px;
+  display:flex;
+  flex-direction:column;
+  padding:34px clamp(26px, 3vw, 44px) 32px;
+  border-right:1px solid var(--city-line);
+  border-bottom:1px solid var(--city-line);
+  background:rgba(255,255,255,.2);
+  color:inherit;
+  text-decoration:none;
+  cursor:pointer;
+  transition:background .35s ease, transform .35s ease, box-shadow .35s ease;
+}
+
+.recommendation-card:hover{
+  z-index:1;
+  background:#fff;
+  transform:translateY(-5px);
+  box-shadow:0 22px 55px rgba(55,45,35,.1);
+}
+
+.recommendation-card:focus-visible{
+  z-index:2;
+  outline:2px solid var(--city-gold);
+  outline-offset:-6px;
+  background:#fff;
+}
+
+.recommendation-card-featured{
+  background:rgba(168,120,76,.08);
+}
+
+.recommendation-topline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:42px;
+  font-family:"Cinzel", serif;
+  font-size:12px;
+  letter-spacing:.15em;
+  color:rgba(37,34,31,.48);
+}
+
+.recommendation-topline svg{
+  width:22px;
+  height:22px;
+  stroke-width:1.35;
+  color:var(--city-gold);
+}
+
+.recommendation-card h3{
+  margin:13px 0 17px;
+  font-family:"Cinzel", serif;
+  font-size:clamp(1.45rem, 2.25vw, 2.15rem);
+  font-weight:400;
+  line-height:1.15;
+  color:var(--city-ink);
+}
+
+.recommendation-card p{
+  margin:0 0 28px;
+  font-family:"Montserrat", sans-serif;
+  font-size:12px;
+  line-height:1.85;
+  color:var(--city-muted);
+}
+
+.recommendation-tip{
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px solid rgba(168,120,76,.18);
+  font-size:8px;
+  letter-spacing:.16em;
+}
+
+.city-story-gallery:hover img{transform:scale(1);}
+
+@media (max-width:980px){
+  .city-intro{
+    padding-top:90px;
+    padding-bottom:28px;
+  }
+
+  .city-stories{
+    width:calc(100vw - 40px);
+  }
+
+  .city-story,
+  .city-story-reverse{
+    grid-template-columns:1fr;
+    gap:42px;
+    padding:70px 0 82px;
+  }
+
+  .city-story:first-child{
+    padding-top:46px;
+  }
+
+  .city-story-reverse .city-story-copy,
+  .city-story-reverse .city-story-gallery{
+    grid-column:1;
+  }
+
+  .city-story-reverse .city-story-copy{
+    grid-row:1;
+  }
+
+  .city-story-reverse .city-story-gallery{
+    grid-row:2;
+  }
+
+  .city-story-copy{
+    max-width:650px;
+  }
+
+  .city-story-gallery{
+    height:520px;
+  }
+
+  .recommendations{
+    width:calc(100vw - 40px);
+    padding-top:72px;
+  }
+
+  .recommendations-divider{
+    width:calc(100vw - 40px);
+  }
+
+  .recommendations-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width:720px){
+  .explore-sitia-page .nav{
+    left:50%;
+    top:auto;
+    bottom:18px;
+    transform:translateX(-50%);
+  }
+
+  .explore-sitia-page .links{
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    max-width:calc(100vw - 24px);
+    gap:10px;
+    padding:10px 14px;
+    flex-wrap:wrap;
+    border-radius:999px;
+    background:rgba(20,20,20,.52);
+    backdrop-filter:blur(12px);
+  }
+
+  .explore-sitia-page .links::before{
+    display:none;
+  }
+
+  .explore-sitia-page .links a{
+    color:rgba(255,255,255,.86) !important;
+    font-size:10px;
+    letter-spacing:2px;
+  }
+
+  .city-intro{
+    width:calc(100vw - 24px);
+    padding:82px 12px 38px;
+  }
+
+  .city-intro h1{
+    margin-bottom:26px;
+    font-size:clamp(2.45rem, 11.5vw, 3.9rem);
+    line-height:1.05;
+    letter-spacing:.015em;
+  }
+
+  .city-intro h1 span{
+    margin-right:.1em;
+    font-size:.42em;
+    letter-spacing:.16em;
+  }
+
+  .city-intro p{
+    width:min(92%, 460px);
+    padding:0;
+    font-size:.92rem;
+    line-height:1.85;
+  }
+
+  .city-intro-line{
+    display:block;
+    position:static;
+    width:72px;
+    height:1px;
+    margin:24px auto 0;
+    background:var(--city-line);
+  }
+
+  .city-stories{
+    width:calc(100vw - 24px);
+  }
+
+  .city-story,
+  .city-story-reverse{
+    gap:34px;
+    padding:58px 0 68px;
+  }
+
+  .city-story:first-child{
+    padding-top:38px;
+  }
+
+  .city-story-copy{
+    padding-left:20px;
+  }
+
+  .city-story h2{
+    font-size:clamp(2.5rem, 13vw, 4rem);
+  }
+
+  .city-story-copy p{
+    font-size:12px;
+    line-height:1.85;
+  }
+
+  .city-story-gallery{
+    height:390px;
+    gap:7px;
+  }
+
+  .city-story-gallery img{
+    border-radius:9px;
+  }
+
+  .recommendations{
+    width:calc(100vw - 24px);
+    margin-top:10px;
+    padding-top:58px;
+  }
+
+  .recommendations-divider{
+    width:calc(100vw - 24px);
+    margin-top:24px;
+  }
+
+  .recommendations-divider-after{
+    margin-top:58px;
+  }
+
+  .recommendations-heading{
+    grid-template-columns:1fr;
+    gap:22px;
+    margin-bottom:38px;
+  }
+
+  .recommendations-heading h2{
+    font-size:clamp(2.45rem, 12vw, 3.8rem);
+  }
+
+  .recommendations-heading > p{
+    max-width:520px;
+    font-size:.95rem;
+  }
+
+  .recommendations-grid{
+    grid-template-columns:1fr;
+  }
+
+  .recommendation-card{
+    min-height:320px;
+    padding:28px 24px;
+  }
+
+  .recommendation-topline{
+    margin-bottom:34px;
+  }
+}
+
+/* Keep the hovered image stable and flat after the base gallery rules. */
+.explore-sitia-page .city-story-gallery img:hover{position:relative;z-index:8;transform:scale(1.018);filter:saturate(1.02) contrast(1.01);box-shadow:0 18px 38px rgba(35,36,24,.18)}

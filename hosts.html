@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet the family behind Platani Seaside Villa in Sitia and send us a direct enquiry for your stay in Crete.">
+  <meta property="og:title" content="The Hosts | Platani Seaside Villa">
+  <meta property="og:description" content="A warm family welcome and direct booking enquiries for your stay by the sea in Sitia, Crete.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/image.png">
+  <title>The Hosts | Platani Seaside Villa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Lora:ital@0;1&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=18">
+  <link rel="stylesheet" href="stylehosts.css?v=15">
+  <script defer src="booking.js?v=3"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body class="hosts-page">
+  <div class="nav" id="nav">
+    <div class="nav-inner">
+      <div class="links" aria-label="Navigation">
+        <a href="accommodation.html">Accommodation</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="explore-sitia.html">Explore Sitia</a>
+        <a href="hosts.html" class="active">The Hosts</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="hosts-main">
+    <article class="hosts-story">
+      <span class="hosts-kicker">Cretan hospitality</span>
+      <h1>The <span class="title-beige">Hosts</span></h1>
+
+      <div class="hosts-copy">
+        <p>Hello, my name is Emmanuel, and I was born and raised in Sitia, a beautiful seaside town in eastern Crete that I am proud to call home. I am currently studying Computer Science at Aristotle University of Thessaloniki, but my connection with Sitia, its people, its traditions, and its unique natural beauty has always remained an important part of who I am. From a young age, I have been sociable, curious, and genuinely interested in meeting people from different places and backgrounds. Travelling is one of my greatest passions, as it allows me to discover new cultures, experience different ways of life, and understand how meaningful warm and authentic hospitality can be.</p>
+        <p>Inspired by these experiences, my family and I created Platani Seaside Villa as more than simply a place to stay. Our wish was to offer our guests a peaceful and welcoming home by the sea, where they can slow down, relax, and enjoy the genuine character of Crete. Every detail of the villa has been thoughtfully prepared with care, combining comfort, simplicity, and the natural beauty of the surrounding landscape. For us, hospitality is deeply personal. It is about making every guest feel valued, comfortable, and truly at home from the moment they arrive.</p>
+        <p>As a family, we will always be available to assist you and ensure that your stay is as enjoyable and effortless as possible. We would be delighted to share our favourite beaches, traditional tavernas, scenic routes, and hidden local gems that will help you experience Sitia beyond the usual tourist paths. Our greatest reward is seeing our guests leave feeling relaxed, happy, and filled with unforgettable memories. At Platani Seaside Villa, you are not simply visiting Crete—you are being welcomed into a place we love, and we hope you will come to love it too.</p>
+      </div>
+
+      <span class="hosts-note">Welcome · Rest · Belong</span>
+    </article>
+
+    <section id="book-now" class="booking-request-section" aria-labelledby="booking-request-title">
+      <div class="booking-request-heading">
+        <h2 id="booking-request-title">Ready To <span class="title-beige">Meet</span> Us?</h2>
+        <p>We would be delighted to hear from you and help make your stay in Crete truly memorable.</p>
+      </div>
+
+      <form class="booking-request-form" action="/api/booking" method="POST" data-booking-form>
+        <input class="booking-honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="booking-field booking-field-wide">
+          <label for="booking-name">Full name</label>
+          <input id="booking-name" name="name" type="text" autocomplete="name" required maxlength="100">
+        </div>
+
+        <div class="booking-field">
+          <label for="booking-email">Email</label>
+          <input id="booking-email" name="email" type="email" autocomplete="email" required maxlength="254">
+        </div>
+
+        <div class="booking-field">
+          <label for="booking-phone">Phone</label>
+          <input id="booking-phone" name="phone" type="tel" autocomplete="tel" maxlength="40">
+        </div>
+
+        <div class="booking-field booking-field-wide">
+          <label for="booking-message">Message</label>
+          <textarea id="booking-message" name="message" rows="4" required maxlength="3000"></textarea>
+        </div>
+
+        <div class="booking-submit-row booking-field-wide">
+          <p>By sending this request, you agree to be contacted about your stay.</p>
+          <button type="submit">Send enquiry <span aria-hidden="true">→</span></button>
+          <p class="booking-status" role="status" aria-live="polite" data-booking-status></p>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
