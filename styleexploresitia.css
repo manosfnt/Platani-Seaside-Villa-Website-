@@ -78,7 +78,6 @@
   display:none;
 }
 
-.city-intro-eyebrow,
 .city-story-number,
 .city-story-note{
   font-family:"Montserrat", sans-serif;
@@ -356,6 +355,16 @@
   background:rgba(168,120,76,.08);
 }
 
+@media (min-width:1240px){
+  .city-stories,
+  .recommendations,
+  .recommendations-divider{
+    width:min(1220px, calc(100vw - 260px));
+    margin-left:max(220px, calc((100vw - 1220px) / 2));
+    margin-right:auto;
+  }
+}
+
 .recommendation-topline{
   display:flex;
   align-items:center;
@@ -579,8 +588,14 @@
     margin-bottom:38px;
   }
 
+  .recommendations-heading > *{
+    min-width:0;
+    max-width:100%;
+  }
+
   .recommendations-heading h2{
     font-size:clamp(2.45rem, 12vw, 3.8rem);
+    overflow-wrap:anywhere;
   }
 
   .recommendations-heading > p{

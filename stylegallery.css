@@ -66,31 +66,6 @@
   z-index: 1;
 }
 
-/* Intro and decorative leaf */
-.gallery-intro {
-  padding-bottom: 4px;
-}
-
-.gallery-showcase {
-  position: relative;
-  padding-top: 24px;
-}
-
-.gallery-leaf {
-  position: absolute;
-  top: 8px;
-  left: calc(clamp(170px, 16vw, 320px) + 34px);
-  pointer-events: none;
-}
-
-.gallery-leaf img {
-  display: block;
-  width: clamp(54px, 6vw, 84px);
-  height: auto;
-  object-fit: contain;
-  opacity: 0.72;
-}
-
 .gallery-mega-title {
   position: relative;
   margin: 0;
@@ -130,20 +105,6 @@
   display: inline-block;
   color: var(--gold);
   vertical-align: middle;
-}
-
-.gallery-luxury-subtitle {
-  display: inline-flex;
-  align-items: center;
-  margin: 1px 0 0;
-  color: rgba(0, 0, 0, 0.76);
-  font-family: "Lora", serif;
-  font-size: clamp(0.7rem, 1.15vw, 0.98rem);
-  font-style: italic;
-  font-weight: 300;
-  line-height: 1.4;
-  letter-spacing: 3.5px;
-  text-transform: uppercase;
 }
 
 /* Photo grid */
@@ -492,6 +453,7 @@
     max-width:none;
     margin-left:auto!important;
     margin-right:auto!important;
+    padding-top:72px!important;
     padding-left:0;
     padding-right:0;
   }
@@ -532,14 +494,6 @@
   .gallery-page .nav::after,
   .gallery-page::after {
     display: none;
-  }
-
-  .gallery-leaf {
-    left: 22px;
-  }
-
-  .gallery-luxury-subtitle {
-    letter-spacing: 2.5px;
   }
 
   .gallery-collage {

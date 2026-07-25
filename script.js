@@ -2,40 +2,8 @@
 const $ = (q, p=document) => p.querySelector(q);
 const $$ = (q, p=document) => [...p.querySelectorAll(q)];
 
-// ---- Toast
-const toast = $('#toast');
-let toastT;
-function showToast(msg){
-  toast.textContent = msg;
-  toast.classList.add('show');
-  clearTimeout(toastT);
-  toastT = setTimeout(() => toast.classList.remove('show'), 1600);
-}
-
-// ---- Modal (SAFE)
-const modal = $('#modal');
-const openModal2 = $('#openModal2');
-const closeModal = $('#closeModal');
-
-function openM(){
-  modal.classList.add('open');
-  modal.setAttribute('aria-hidden','false');
-  document.body.style.overflow='hidden';
-}
-function closeM(){
-  modal.classList.remove('open');
-  modal.setAttribute('aria-hidden','true');
-  document.body.style.overflow='';
-}
-
-if (openModal2) openModal2.addEventListener('click', openM);
-if (closeModal) closeModal.addEventListener('click', closeM);
-if (modal) modal.addEventListener('click', (e)=>{ if(e.target === modal) closeM(); });
-
-// ---- Scroll progress + back to top
+// ---- Scroll progress
 const progress = $('#progress');
-const topbtn = $('#topbtn');
-
 
 function onScroll(){
   const h = document.documentElement;
@@ -43,26 +11,7 @@ function onScroll(){
   const height = h.scrollHeight - h.clientHeight;
   const pct = height > 0 ? (scrolled / height) * 100 : 0;
   progress.style.width = pct.toFixed(2) + '%';
-
-  if (topbtn) {
-    if(scrolled > 650) topbtn.classList.add('show');
-    else topbtn.classList.remove('show');
-  }
 }
-if (topbtn) topbtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
-
-// ---- Active nav link highlight
-const sections = $$('section[id]');
-const navLinks = $$('[data-link]');
-const sIO = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const id = e.target.getAttribute('id');
-      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+id));
-    }
-  });
-}, { rootMargin: '-45% 0px -50% 0px', threshold: 0.01 });
-sections.forEach(s => sIO.observe(s));
 
 // ---- Parallax glow on mouse move (subtle)
 const glow = $('#glow');
@@ -282,7 +231,6 @@ document.addEventListener('keydown', (e)=>{
     if(e.key === 'ArrowLeft') showLB(currentIndex - 1);
     if(e.key === 'ArrowRight') showLB(currentIndex + 1);
   }
-  if(modal && modal.classList.contains('open') && e.key === 'Escape') closeM();
 });
 
 // ---- Testimonials slider
@@ -292,7 +240,6 @@ const airbnbReviewsLink = $('#airbnbReviewsLink');
 const reviewText = $('#reviewText');
 const reviewWho = $('#reviewWho');
 const reviewNationality = $('#reviewNationality');
-const reviewSource = $('#reviewSource');
 const reviewCounter = $('#reviewCounter');
 const nextReviewArrow = $('#nextReviewArrow');
 const contactLocationLink = $('#contactLocationLink');
@@ -339,7 +286,6 @@ function showReview(startIndex){
   }
   if (reviewWho) reviewWho.textContent = review.name || 'Guest';
   if (reviewNationality) reviewNationality.textContent = review.country || '';
-  if (reviewSource) reviewSource.textContent = review.source || 'Guest Review';
   if (reviewCounter) reviewCounter.textContent = `${rIndex + 1} / ${reviews.length}`;
 }
 
@@ -364,48 +310,16 @@ async function loadReviews(){
     if(!response.ok) throw new Error(`Reviews request failed: ${response.status}`);
     const data = await response.json();
     if(!Array.isArray(data) || !data.length) throw new Error('No reviews found');
-    reviews = data.map(review => ({ ...review, source: review.source || 'Booking.com' }));
+    reviews = data;
     showReview(0);
   } catch (error) {
     if (reviewText) reviewText.textContent = 'Guest reviews are temporarily unavailable.';
-    if (reviewSource) reviewSource.textContent = 'Guest Reviews';
     if (reviewCounter) reviewCounter.textContent = '';
     console.error(error);
   }
 }
 
 loadReviews();
-
-// ---- Price estimate
-const nights = $('#nights');
-const guests = $('#guests');
-const base = $('#base');
-const extra = $('#extra');
-const total = $('#total');
-
-function calc(){
-  const n = Math.max(1, parseInt(nights?.value || '1', 10));
-  const g = Math.max(1, parseInt(guests?.value || '1', 10));
-  const b = Math.max(0, parseFloat(base?.value || '0'));
-  const ex = Math.max(0, parseFloat(extra?.value || '0'));
-  const est = n * (b + Math.max(0, g-2) * ex);
-  if (total) total.textContent = est.toLocaleString('el-GR', { style:'currency', currency:'EUR' });
-}
-[nights, guests, base, extra].forEach(el => el && el.addEventListener('input', calc));
-calc();
-
-// ---- Copy to clipboard
-$$('[data-copy]').forEach(btn=>{
-  btn.addEventListener('click', async ()=>{
-    const txt = btn.getAttribute('data-copy');
-    try{
-      await navigator.clipboard.writeText(txt);
-      showToast('Copied: ' + txt);
-    }catch{
-      showToast('Copy failed (browser)');
-    }
-  });
-});
 
 // initial scroll state
 // ---- Hero interactive scroll transition

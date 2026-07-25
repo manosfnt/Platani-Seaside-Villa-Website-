@@ -49,6 +49,12 @@ a:hover{
   color:var(--gold2);
 }
 
+a:focus-visible,
+button:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:4px;
+}
+
 .progress{
   position:fixed;
   top:0;
@@ -1882,21 +1888,6 @@ section.villa-intro .villa-intro-visual{
   padding-top:26px;
 }
 
-.review-source{
-  display:inline-flex;
-  align-items:center;
-  margin-bottom:14px;
-  color:#d7c2a1;
-  font-family:'Montserrat', sans-serif;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  background:none;
-  padding:0;
-  border-radius:0;
-}
-
 .quote{
   margin:0;
   font-family:'Montserrat', sans-serif;
@@ -2635,27 +2626,6 @@ footer{
   color:#2a2a2a;
 }
 
-.topbtn{
-  position:fixed;
-  right:16px;
-  bottom:84px;
-  width:48px;
-  height:48px;
-  border-radius:16px;
-  border:1px solid rgba(0,0,0,0.10);
-  background:rgba(253,250,247,0.92);
-  backdrop-filter:blur(10px);
-  box-shadow:0 18px 50px rgba(0,0,0,0.18);
-  cursor:pointer;
-  display:none;
-  z-index:2000;
-  font-weight:900;
-}
-
-.topbtn.show{
-  display:block;
-}
-
 @media (max-width: 980px){
   .villa-intro{
     width:calc(100vw - 56px);
@@ -2805,7 +2775,6 @@ footer{
     display:none;
   }
 
-  .review-source,
   .quote{
     text-align:center;
     justify-content:center;
@@ -4394,52 +4363,6 @@ body .explore-card:hover{transform:perspective(1100px) translateZ(20px) scale(1.
   padding:110px 0 90px;
 }
 
-.privacy-header{
-  min-height:0;
-  padding:54px 24px 52px;
-  color:#f8efe2;
-  background:#292a2d;
-  border-bottom:1px solid rgba(185,140,93,.36);
-}
-
-.privacy-header::before,
-.privacy-header::after{
-  display:none;
-}
-
-.privacy-header p{
-  margin:0 0 14px;
-  color:#c8a77f;
-  font-family:'Montserrat', sans-serif;
-  font-size:10px;
-  font-weight:600;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-}
-
-.privacy-header h1{
-  margin:0;
-  color:#f4e6d1;
-  font-family:'Cinzel', serif;
-  font-size:clamp(2.3rem, 6vw, 4rem);
-  font-weight:500;
-  letter-spacing:.06em;
-}
-
-.privacy-header span{
-  display:block;
-  margin-top:14px;
-  color:rgba(255,255,255,.52);
-  font-family:'Montserrat', sans-serif;
-  font-size:10px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
-
-.privacy-content{
-  padding:56px clamp(4px, 5vw, 54px) 0;
-}
-
 .privacy-intro{
   margin:0 0 52px;
   font-size:20px;
@@ -4447,55 +4370,12 @@ body .explore-card:hover{transform:perspective(1100px) translateZ(20px) scale(1.
   color:#4f4539;
 }
 
-.privacy-content section{
-  padding:0 0 34px;
-  margin:0 0 34px;
-  border-bottom:1px solid rgba(140,98,57,.16);
-}
-
-.privacy-content section:last-child{
-  margin-bottom:0;
-  border-bottom:0;
-}
-
-.privacy-content h2{
-  margin:0 0 18px;
-  color:#382f27;
-  font-family:'Cinzel', serif;
-  font-size:20px;
-  font-weight:600;
-  letter-spacing:.02em;
-}
-
-.privacy-content p,
-.privacy-content li{
-  color:#5a5148;
-  font-family:'Lora', serif;
-  font-size:15px;
-  line-height:1.85;
-}
-
-.privacy-content p{
-  margin:0 0 14px;
-}
-
-.privacy-content ul{
-  margin:0 0 16px;
-  padding-left:22px;
-}
-
-.privacy-content li + li{
-  margin-top:7px;
-}
-
-.privacy-content a{
-  color:#8c6239;
-  text-decoration:underline;
-  text-decoration-color:rgba(140,98,57,.32);
-  text-underline-offset:3px;
-}
-
 @media (max-width:720px){
+  .reveal[data-reveal="left"],
+  .reveal[data-reveal="right"]{
+    --reveal-x:0px;
+  }
+
   .legal-footer{
     min-height:0;
     padding:22px 20px;
@@ -4508,16 +4388,14 @@ body .explore-card:hover{transform:perspective(1100px) translateZ(20px) scale(1.
     padding:84px 0 64px;
   }
 
-  .privacy-header{
-    padding:42px 18px 40px;
-  }
-
-  .privacy-content{
-    padding-top:38px;
-  }
-
   .privacy-intro{
     margin-bottom:40px;
     font-size:17px;
+  }
+
+  section.about-sanctuary .about-sanctuary-copy{
+    width:100%;
+    max-width:100%;
+    padding-right:12px;
   }
 }
