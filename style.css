@@ -4343,3 +4343,181 @@ body .explore-card:hover{transform:perspective(1100px) translateZ(20px) scale(1.
 
   body .nav .links a:hover{transform:translateX(4px)!important;}
 }
+
+/* Privacy and legal */
+.booking-submit-row p a{
+  color:var(--gold2);
+  font-weight:600;
+  text-decoration:underline;
+  text-decoration-color:rgba(140,98,57,.34);
+  text-underline-offset:3px;
+}
+
+.booking-submit-row p a:hover{
+  color:var(--gold);
+}
+
+.legal-footer{
+  min-height:76px;
+  padding:24px clamp(24px, 6vw, 92px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  background:#232427;
+  border-top:1px solid rgba(215,194,161,.15);
+  color:rgba(255,255,255,.56);
+  font-family:'Montserrat', sans-serif;
+  font-size:10px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.legal-footer a{
+  color:#d7c2a1;
+  transition:color .2s ease;
+}
+
+.legal-footer a:hover,
+.legal-footer a[aria-current="page"]{
+  color:var(--gold);
+}
+
+.privacy-page{
+  background:#f7f3ec;
+  color:#28241f;
+}
+
+.privacy-main{
+  width:min(920px, calc(100% - 48px));
+  margin:0 auto;
+  padding:110px 0 90px;
+}
+
+.privacy-header{
+  min-height:0;
+  padding:54px 24px 52px;
+  color:#f8efe2;
+  background:#292a2d;
+  border-bottom:1px solid rgba(185,140,93,.36);
+}
+
+.privacy-header::before,
+.privacy-header::after{
+  display:none;
+}
+
+.privacy-header p{
+  margin:0 0 14px;
+  color:#c8a77f;
+  font-family:'Montserrat', sans-serif;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+
+.privacy-header h1{
+  margin:0;
+  color:#f4e6d1;
+  font-family:'Cinzel', serif;
+  font-size:clamp(2.3rem, 6vw, 4rem);
+  font-weight:500;
+  letter-spacing:.06em;
+}
+
+.privacy-header span{
+  display:block;
+  margin-top:14px;
+  color:rgba(255,255,255,.52);
+  font-family:'Montserrat', sans-serif;
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.privacy-content{
+  padding:56px clamp(4px, 5vw, 54px) 0;
+}
+
+.privacy-intro{
+  margin:0 0 52px;
+  font-size:20px;
+  line-height:1.75;
+  color:#4f4539;
+}
+
+.privacy-content section{
+  padding:0 0 34px;
+  margin:0 0 34px;
+  border-bottom:1px solid rgba(140,98,57,.16);
+}
+
+.privacy-content section:last-child{
+  margin-bottom:0;
+  border-bottom:0;
+}
+
+.privacy-content h2{
+  margin:0 0 18px;
+  color:#382f27;
+  font-family:'Cinzel', serif;
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+
+.privacy-content p,
+.privacy-content li{
+  color:#5a5148;
+  font-family:'Lora', serif;
+  font-size:15px;
+  line-height:1.85;
+}
+
+.privacy-content p{
+  margin:0 0 14px;
+}
+
+.privacy-content ul{
+  margin:0 0 16px;
+  padding-left:22px;
+}
+
+.privacy-content li + li{
+  margin-top:7px;
+}
+
+.privacy-content a{
+  color:#8c6239;
+  text-decoration:underline;
+  text-decoration-color:rgba(140,98,57,.32);
+  text-underline-offset:3px;
+}
+
+@media (max-width:720px){
+  .legal-footer{
+    min-height:0;
+    padding:22px 20px;
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .privacy-main{
+    width:calc(100% - 24px);
+    padding:84px 0 64px;
+  }
+
+  .privacy-header{
+    padding:42px 18px 40px;
+  }
+
+  .privacy-content{
+    padding-top:38px;
+  }
+
+  .privacy-intro{
+    margin-bottom:40px;
+    font-size:17px;
+  }
+}
