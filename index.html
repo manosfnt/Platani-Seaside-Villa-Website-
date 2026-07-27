@@ -21,11 +21,62 @@
   {
     "@context": "https://schema.org",
     "@type": "VacationRental",
+    "additionalType": "Villa",
+    "identifier": "platani-seaside-villa-sitia",
     "name": "Platani Seaside Villa",
-    "description": "A peaceful seaside villa in Sitia, Crete.",
-    "image": ["images/image.png"],
+    "description": "A private three-bedroom seaside villa in Platani, Sitia, Crete, for up to six guests, with direct beach access and panoramic sea views.",
+    "url": "https://plataniseasidevilla.gr/",
+    "image": [
+      "https://plataniseasidevilla.gr/images/image-optimized.jpg",
+      "https://plataniseasidevilla.gr/images/PLATANI/EXTERIOR/PHOTO43.jpg",
+      "https://plataniseasidevilla.gr/images/PLATANI/ROOM1/PHOTO01.jpg",
+      "https://plataniseasidevilla.gr/images/PLATANI/ROOM2/PHOTO07.jpg",
+      "https://plataniseasidevilla.gr/images/PLATANI/ROOM3/PHOTO11.jpg",
+      "https://plataniseasidevilla.gr/images/PLATANI/LIVINGROOM/PHOTO17.jpg",
+      "https://plataniseasidevilla.gr/images/PLATANI/TOILETS/PHOTO20.jpg",
+      "https://plataniseasidevilla.gr/images/PLATANI/OUTSIDE%20HOME/PHOTO31.jpg"
+    ],
     "email": "plataniseasidevilla@gmail.com",
-    "address": {"@type": "PostalAddress", "addressLocality": "Sitia", "addressRegion": "Crete", "addressCountry": "GR"}
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Platani",
+      "addressLocality": "Sitia",
+      "addressRegion": "Crete",
+      "postalCode": "723 00",
+      "addressCountry": "GR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 35.2208459,
+      "longitude": 26.0667817
+    },
+    "containsPlace": {
+      "@type": "Accommodation",
+      "additionalType": "EntirePlace",
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "value": 6
+      },
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 108,
+        "unitCode": "MTK"
+      },
+      "numberOfBedrooms": 3,
+      "numberOfBathroomsTotal": 2,
+      "amenityFeature": [
+        {"@type": "LocationFeatureSpecification", "name": "ac", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "balcony", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "beachAccess", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "kitchen", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "outdoorGrill", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "tv", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "washerDryer", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "wifi", "value": true}
+      ]
+    },
+    "checkinTime": "16:00:00",
+    "checkoutTime": "11:00:00"
   }
   </script>
 </head>
