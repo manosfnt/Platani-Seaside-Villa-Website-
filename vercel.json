@@ -1,7 +1,7 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/accommodation.html", "permanent": true },
-    { "source": "/accomndation.html", "destination": "/accommodation.html", "permanent": true }
+    { "source": "/accommodation.html", "destination": "/", "permanent": true },
+    { "source": "/accomndation.html", "destination": "/", "permanent": true }
   ],
   "headers": [
     {
