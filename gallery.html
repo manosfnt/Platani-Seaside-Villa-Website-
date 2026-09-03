@@ -8,32 +8,39 @@
   <meta property="og:description" content="See the villa, its calm interiors and the landscape of eastern Crete.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://plataniseasidevilla.gr/gallery.html">
-  <meta property="og:image" content="https://plataniseasidevilla.gr/images/image.png">
+  <meta property="og:image" content="https://plataniseasidevilla.gr/images/image-optimized.jpg">
   <link rel="canonical" href="https://plataniseasidevilla.gr/gallery.html">
   <title>Gallery | Platani Seaside Villa</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="style.css?v=22" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#24342d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:wght@400;700&family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=24" />
   <link rel="stylesheet" href="stylegallery.css?v=8" />
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body class="gallery-page">
   <div class="progress" id="progress"></div>
 
-  <div class="nav" id="nav">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="nav" id="nav" aria-label="Main">
     <div class="nav-inner">
-      <div class="links" aria-label="Navigation">
+      <div class="links">
         <a href="/">Accommodation</a>
         <a href="gallery.html" class="active" aria-current="page">Gallery</a>
         <a href="explore-sitia.html">Explore Sitia</a>
         <a href="hosts.html">The Hosts</a>
       </div>
     </div>
-  </div>
+  </nav>
 
   <div class="hero-wrap page-shell">
-    <main>
+    <main id="main" tabindex="-1">
       <section id="all-photos" class="gallery-page-section gallery-grid-section">
         <div class="gallery-heading-row">
           <div class="toolbar reveal" aria-label="Filter gallery photos">
@@ -56,7 +63,7 @@
 
               <div class="contact-list">
                 <a class="contact-link" href="mailto:plataniseasidevilla@gmail.com">
-                  <span class="contact-icon" aria-hidden="true"><i data-lucide="mail"></i></span>
+                  <span class="contact-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="lucide lucide-mail" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /> <rect x="2" y="4" width="20" height="16" rx="2" /> </svg></span>
                   <span>
                     <small>Email</small>
                     <strong>plataniseasidevilla@gmail.com</strong>
@@ -64,7 +71,7 @@
                 </a>
 
                 <a class="contact-link" href="tel:+306947971605">
-                  <span class="contact-icon" aria-hidden="true"><i data-lucide="phone"></i></span>
+                  <span class="contact-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="lucide lucide-phone" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /> </svg></span>
                   <span>
                     <small>Phone</small>
                     <strong>+30 694 797 1605</strong>
@@ -72,7 +79,7 @@
                 </a>
 
                 <a class="contact-link" href="https://wa.me/306947971605" target="_blank" rel="noopener noreferrer">
-                  <span class="contact-icon" aria-hidden="true"><i data-lucide="message-circle"></i></span>
+                  <span class="contact-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="lucide lucide-message-circle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" /> </svg></span>
                   <span>
                     <small>WhatsApp</small>
                     <strong>+30 694 797 1605</strong>
@@ -80,7 +87,7 @@
                 </a>
 
                 <a class="contact-link" href="https://www.google.com/maps/place/Platani+Seaside+Villa/@35.220846,26.0644,18z/" target="_blank" rel="noopener noreferrer">
-                  <span class="contact-icon" aria-hidden="true"><i data-lucide="map-pin"></i></span>
+                  <span class="contact-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" class="lucide lucide-map-pin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /> </svg></span>
                   <span>
                     <small>Location</small>
                     <strong>View on Google Maps</strong>
@@ -94,7 +101,7 @@
             <div class="direct-booking-block">
               <h3 class="details-title">Book Now</h3>
               <p class="direct-booking-copy">Every guest is warmly invited to contact us through their preferred channel. We will be delighted to personally arrange your stay at the villa and offer our best available rates.</p>
-              <a class="direct-booking-link" href="hosts.html#book-now">Send a booking request <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+              <a class="direct-booking-link" href="hosts.html#book-now">Send a booking request <svg aria-hidden="true" focusable="false" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a>
             </div>
           </div>
 
@@ -102,10 +109,10 @@
             <div class="quick-browse-block">
               <h3 class="details-title">Quick Browse</h3>
               <nav class="quick-browse-links" aria-label="Quick navigation">
-                <a href="/"><span>Accommodation</span><i data-lucide="arrow-right"></i></a>
-                <a href="gallery.html"><span>Gallery</span><i data-lucide="arrow-right"></i></a>
-                <a href="explore-sitia.html"><span>Explore Sitia</span><i data-lucide="arrow-right"></i></a>
-                <a href="hosts.html"><span>The Hosts</span><i data-lucide="arrow-right"></i></a>
+                <a href="/"><span>Accommodation</span><svg aria-hidden="true" focusable="false" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a>
+                <a href="gallery.html"><span>Gallery</span><svg aria-hidden="true" focusable="false" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a>
+                <a href="explore-sitia.html"><span>Explore Sitia</span><svg aria-hidden="true" focusable="false" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a>
+                <a href="hosts.html"><span>The Hosts</span><svg aria-hidden="true" focusable="false" class="lucide lucide-arrow-right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a>
               </nav>
             </div>
           </div>
@@ -131,6 +138,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=9" defer></script>
+  <script src="script.js?v=10" defer></script>
 </body>
 </html>

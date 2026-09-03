@@ -41,6 +41,10 @@ function initMediaSlideshow(mediaRoot){
 
   if(!slideSources.length) return;
 
+  // A single slide is already painted from the HTML - leave it alone so the
+  // hero image is never torn down and re-created after first paint.
+  if(slideSources.length < 2 && mediaRoot.querySelector('.hero-slide')) return;
+
   mediaRoot.replaceChildren();
 
   slideSources.forEach((src, index) => {
@@ -98,8 +102,8 @@ const galleryPhotos = gallerySections.flatMap(section =>
     const photoNumber = section.from + offset;
     const fileNumber = String(photoNumber).padStart(2, '0');
     return {
-      src: `images/gallery-thumbs/${section.folder}/PHOTO${fileNumber}.jpg`,
-      largeSrc: `images/gallery-large/${section.folder}/PHOTO${fileNumber}.jpg`,
+      src: `images/gallery-thumbs/${section.folder}/PHOTO${fileNumber}.webp`,
+      largeSrc: `images/gallery-large/${section.folder}/PHOTO${fileNumber}.webp`,
       alt: `Platani Seaside Villa - photo ${photoNumber}`,
       label: section.label,
       shape: ['landscape', 'portrait', 'standard', 'wide', 'portrait', 'standard'][photoNumber % 6],
@@ -162,18 +166,28 @@ function showLB(i){
   }, lb.classList.contains('open') ? 110 : 0);
 }
 
+let lbReturnFocus = null;
+
+function lbFocusables(){
+  return $$('button, [href]', lb).filter(el => !el.disabled && el.offsetParent !== null);
+}
+
 function openLB(i){
   currentIndex = i;
+  lbReturnFocus = document.activeElement;
   showLB(i);
   lb.classList.add('open');
   lb.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
+  if(lbClose) lbClose.focus();
 }
 function closeLB(){
   lb.classList.remove('open');
   lb.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
   lbImg.src = '';
+  if(lbReturnFocus && document.contains(lbReturnFocus)) lbReturnFocus.focus();
+  lbReturnFocus = null;
 }
 items.forEach(el=>{
   el.setAttribute('tabindex', '0');
@@ -230,51 +244,31 @@ document.addEventListener('keydown', (e)=>{
     if(e.key === 'Escape') closeLB();
     if(e.key === 'ArrowLeft') showLB(currentIndex - 1);
     if(e.key === 'ArrowRight') showLB(currentIndex + 1);
+    if(e.key === 'Tab'){
+      const focusable = lbFocusables();
+      if(!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if(e.shiftKey && document.activeElement === first){
+        e.preventDefault();
+        last.focus();
+      }else if(!e.shiftKey && document.activeElement === last){
+        e.preventDefault();
+        first.focus();
+      }
+    }
   }
 });
 
 // ---- Testimonials slider
 let reviews = [];
-const bookingReviewsLink = $('#bookingReviewsLink');
-const airbnbReviewsLink = $('#airbnbReviewsLink');
 const reviewText = $('#reviewText');
 const reviewWho = $('#reviewWho');
 const reviewNationality = $('#reviewNationality');
 const reviewCounter = $('#reviewCounter');
 const nextReviewArrow = $('#nextReviewArrow');
-const contactLocationLink = $('#contactLocationLink');
+const prevReviewArrow = $('#prevReviewArrow');
 let rIndex = 0;
-
-const reviewLinks = {
-  booking: 'https://www.booking.com/hotel/gr/platani-seaside-villa.en-gb.html#tab-reviews',
-  airbnb: 'https://www.airbnb.com/rooms/1464374187190832972/reviews'
-};
-
-function syncReviewLinks(){
-  if (bookingReviewsLink) {
-    if (reviewLinks.booking) {
-      bookingReviewsLink.href = reviewLinks.booking;
-      bookingReviewsLink.classList.remove('is-disabled');
-      bookingReviewsLink.setAttribute('aria-disabled', 'false');
-    } else {
-      bookingReviewsLink.href = '#';
-      bookingReviewsLink.classList.add('is-disabled');
-      bookingReviewsLink.setAttribute('aria-disabled', 'true');
-    }
-  }
-
-  if (airbnbReviewsLink) {
-    if (reviewLinks.airbnb) {
-      airbnbReviewsLink.href = reviewLinks.airbnb;
-      airbnbReviewsLink.classList.remove('is-disabled');
-      airbnbReviewsLink.setAttribute('aria-disabled', 'false');
-    } else {
-      airbnbReviewsLink.href = '#';
-      airbnbReviewsLink.classList.add('is-disabled');
-      airbnbReviewsLink.setAttribute('aria-disabled', 'true');
-    }
-  }
-}
 
 function showReview(startIndex){
   if(!reviews.length) return;
@@ -289,20 +283,8 @@ function showReview(startIndex){
   if (reviewCounter) reviewCounter.textContent = `${rIndex + 1} / ${reviews.length}`;
 }
 
-if (bookingReviewsLink) bookingReviewsLink.addEventListener('click', (e)=>{
-  e.preventDefault();
-  if(!reviewLinks.booking) return;
-  const bookingTab = window.open(reviewLinks.booking, '_blank', 'noopener,noreferrer');
-  if(bookingTab) bookingTab.opener = null;
-});
-if (airbnbReviewsLink) airbnbReviewsLink.addEventListener('click', (e)=>{ if(!reviewLinks.airbnb) e.preventDefault(); });
-if (contactLocationLink) contactLocationLink.addEventListener('click', (e)=>{
-  e.preventDefault();
-  const locationTab = window.open(contactLocationLink.href, '_blank', 'noopener,noreferrer');
-  if(locationTab) locationTab.opener = null;
-});
 if (nextReviewArrow) nextReviewArrow.addEventListener('click', ()=>showReview(rIndex + 1));
-syncReviewLinks();
+if (prevReviewArrow) prevReviewArrow.addEventListener('click', ()=>showReview(rIndex - 1));
 
 async function loadReviews(){
   try {
@@ -500,4 +482,3 @@ if(!lightweightHome) initDirectionalScroll();
 initReviewsMedia();
 initHeroSlideshow();
 updateScrollExperience();
-if(window.lucide) lucide.createIcons();

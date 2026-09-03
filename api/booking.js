@@ -1,8 +1,44 @@
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_BODY_BYTES = 12000;
 
+// Throttling. This lives in the instance's memory, so it is not a hard global
+// limit: Vercel may run several instances, and a cold start resets the counter.
+// It still stops the common case - one client hammering the form - and costs
+// nothing. Move to Vercel KV / Upstash if genuine distributed limiting is needed.
+const RATE_WINDOW_MS = 60 * 60 * 1000;
+const RATE_MAX_PER_IP = 5;
+const RATE_MAX_TRACKED_IPS = 5000;
+const recentByIp = new Map();
+
+function clientIp(request) {
+  const forwarded = request.headers['x-forwarded-for'];
+  if (typeof forwarded === 'string' && forwarded) return forwarded.split(',')[0].trim();
+  if (Array.isArray(forwarded) && forwarded.length) return String(forwarded[0]).trim();
+  return request.headers['x-real-ip'] || request.socket?.remoteAddress || 'unknown';
+}
+
+// Returns false when this IP has already used up its allowance.
+function withinRateLimit(ip) {
+  const now = Date.now();
+
+  for (const [key, stamps] of recentByIp) {
+    const live = stamps.filter((t) => now - t < RATE_WINDOW_MS);
+    if (live.length) recentByIp.set(key, live);
+    else recentByIp.delete(key);
+  }
+  if (recentByIp.size > RATE_MAX_TRACKED_IPS) recentByIp.clear();
+
+  const stamps = recentByIp.get(ip) || [];
+  if (stamps.length >= RATE_MAX_PER_IP) return false;
+
+  stamps.push(now);
+  recentByIp.set(ip, stamps);
+  return true;
+}
+
 function clean(value, maxLength) {
-  return String(value || '').trim().slice(0, maxLength);
+  if (typeof value !== 'string' && typeof value !== 'number') return '';
+  return String(value).trim().slice(0, maxLength);
 }
 
 function escapeHtml(value) {
@@ -17,7 +53,15 @@ module.exports = async function handler(request, response) {
     return response.status(405).json({ error: 'Method not allowed.' });
   }
 
-  const contentLength = Number(request.headers && request.headers['content-length']) || 0;
+  const ip = clientIp(request);
+  if (!withinRateLimit(ip)) {
+    response.setHeader('Retry-After', String(RATE_WINDOW_MS / 1000));
+    return response.status(429).json({
+      error: 'Too many enquiries from this connection. Please try again later or email us directly.'
+    });
+  }
+
+  const contentLength = Number(request.headers['content-length']) || 0;
   if (contentLength > MAX_BODY_BYTES) {
     return response.status(413).json({ error: 'Message is too large.' });
   }
@@ -27,6 +71,13 @@ module.exports = async function handler(request, response) {
     body = typeof request.body === 'string' ? JSON.parse(request.body || '{}') : (request.body || {});
   } catch {
     return response.status(400).json({ error: 'Invalid request.' });
+  }
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
+    return response.status(400).json({ error: 'Invalid request.' });
+  }
+  // A missing/forged Content-Length would slip past the check above.
+  if (JSON.stringify(body).length > MAX_BODY_BYTES) {
+    return response.status(413).json({ error: 'Message is too large.' });
   }
   if (body.website) return response.status(200).json({ ok: true });
 
